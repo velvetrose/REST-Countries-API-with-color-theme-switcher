@@ -1,0 +1,36 @@
+<main>
+    <div class="row filters">
+        <input type="text" class="form-control" placeholder="Search for a country..." (keypress)="getCountry($event)">
+        <div class="dropdown dropdown-center">
+          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter By Region
+          </button>
+          <ul class="dropdown-menu" id="dropdown-list">
+            <li><a class="dropdown-item" (click)="getCountryRegion($event)">Africa</a></li>
+            <li><a class="dropdown-item" (click)="getCountryRegion($event)">America</a></li>
+            <li><a class="dropdown-item" (click)="getCountryRegion($event)">Asia</a></li>
+            <li><a class="dropdown-item" (click)="getCountryRegion($event)">Europe</a></li>
+            <li><a class="dropdown-item" (click)="getCountryRegion($event)">Oceania</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="loading" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+        <p>Loading...</p>
+      </div>
+      <div class="row countries gap-5 justify-content-center" *ngIf="!isLoading">
+        <div class="card" style="width: 15rem;" *ngFor="let country of countries" (click)="getCountryDetails(country)">
+          <!-- <img src="https://flagcdn.com/w320/{{country.cca2 | lowercase}}.png" srcset="https://flagcdn.com/w640/{{country.cca2 | lowercase}}.png 2x" width="320" alt="{{ country.name.common}}"> -->
+          <img [src]="country.flags.png" [alt]="country.flags.alt">
+          <div class="card-details">
+            <h4 class="card-title">{{ country.name.common }}</h4>
+            <div class="card-description">
+              <p class="card-text"><span>Population: </span>{{ country.population }}</p>
+              <p class="card-text"><span>Region: </span>{{ country.region }}</p>
+              <p class="card-text"><span>Capital: </span>{{ country.capital }}</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+</main>
+

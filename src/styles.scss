@@ -1,0 +1,55 @@
+@import "./app/scss/config";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+}
+body {
+  background: $very-light-gray;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body.dark-theme {
+  background: $very-dark-blue2;
+  header {
+    background: $dark-blue;
+    color: $white;
+    box-shadow: 0px 0px 0.5rem $very-dark-blue;
+  }
+  main {
+    color: $white;
+    button {
+      background: $dark-blue !important;
+      color: $white;
+      box-shadow: 0 0 5px $very-dark-blue !important;
+    }
+
+    input,
+    .dropdown-toggle,
+    .dropdown-menu {
+      background: $dark-blue !important;
+      border-color: $dark-blue !important;
+      color: $white;
+    }
+    .dropdown-item {
+      color: $white;
+      &:hover{
+        background-color: $very-dark-blue2;
+      }
+    }
+    input::placeholder {
+      color: $white;
+    }
+    .card {
+      background-color: $dark-blue;
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+</div>
+<main *ngIf="!isLoading">
+    <div>
+        <button type="button" class="btn btn-light" [routerLink]="['/']">
+            <i class="fa-solid fa-arrow-left"></i>
+            <p>Back</p>
+        </button>
+    </div>
+    <div class="outer-container d-flex flex-column flex-md-row"  *ngFor= "let country of countries" >
+        <img [src]="country.flags.png" [alt]="country.flags.alt">
+        <div class="details-container">
+            <p class="title">{{country.name.common}}</p>
+            <div class="details d-flex flex-column flex-md-row">
+                <div class="left">
+                    <p><span>Native Name: </span>{{country.name.common}}</p>
+                    <p><span>Population: </span>{{country.population}}</p>
+                    <p><span>Region: </span>{{country.region}}</p>
+                    <p><span>Sub Region: </span>{{country.subregion}}</p>
+                    <p><span>Capital: </span>{{country.capital}}</p>
+                </div>
+                <div class="right">
+                    <p><span>Top Level Domain: </span>{{country.tld}}</p>
+                    <p><span>Currencies:</span><span> {{ currency }}</span></p>
+                    <p><span>Languages:</span> {{ languages.join(', ') }}</p>
+                </div>
+            </div>
+            <div class="chips-container d-flex flex-column flex-md-row gap-4" *ngIf ="borderVisibility">
+                <span>Border Countries: </span>
+                <div class="chips" >
+                    <div class="chip" *ngFor ="let border of borders">
+                       <div (click)="getCountry(border.name.common)"> {{ border.name.common }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
