@@ -44,7 +44,10 @@ body.dark-theme {
         background-color: $very-dark-blue2;
       }
     }
-    input::placeholder,input,input:focus {
+    input::placeholder {
+      color: $white;
+    }
+    input:focus{
       color: $white;
     }
     .card {
